@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="icon" type="x-icon" href="./assets/images/clockface.png">
+    <title>Liane's Work Day Scheduler</title>
+  </head>
+
+  <body>
+    <header class="jumbotron">
+      <!-- <h1 class="display-3">Work Day Scheduler</h1> -->
+      <h1 id="currentDay" class="lead display-4"></h1>
+    </header>
+    <div class="container">
+      <!-- 7 AM Timeblocks go here -->
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span id="hr07" data-time="07" class="input-group-text">&#20;7AM</span>
+        </div>
+        <textarea id="appt07" data-time="07" class="future form-control" aria-label="Time Seven o clock a m"></textarea>
+        <div class="input-group-append">
+          <button id="btn07" data-time="07" class="saveBtn btn btn-outline-secondary" type="button" id="button-addon2">Pencil<br>It In</button>
+        </div>
+      </div>
+      <!-- 8 AM Timeblocks go here -->
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span id="hr08" data-time="08" class="input-group-text">&#20;8AM</span>
+        </div>
+        <textarea id="appt08" data-time="08" class="future form-control" aria-label="Time Eight o clock a m"></textarea>
+        <div class="input-group-append">
+          <button id="btn08" data-time="08" class="saveBtn btn btn-outline-secondary" type="button" id="button-addon2">Pencil<br>It In</button>
+        </div>
+      </div>
+      <!-- 9 AM Timeblocks go here -->
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span id="hr09" data-time="09" class="input-group-text">&#20;9AM</span>
+        </div>
+        <textarea id="appt09" data-time="09" class="future form-control" aria-label="Time Nine o clock a m"></textarea>
+        <div class="input-group-append">
+          <button id="btn09" data-time="09" class="saveBtn btn btn-outline-secondary" type="button" id="button-addon2">Pencil<br>It In</button>
+        </div>
+      </div>
+      <!-- 10 AM Timeblocks go here -->
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span id="hr10" data-time="10" class="input-group-text">10AM</span>
+        </div>
+        <textarea id="appt10" data-time="10" class="future form-control" aria-label="Time Ten o clock a m"></textarea>
+        <div class="input-group-append">
+          <button id="btn10" data-time="10" class="saveBtn btn btn-outline-secondary" type="button" id="button-addon2">Pencil<br>It In</button>
+        </div>
+      </div>
+      <!-- 11 AM Timeblocks go here -->
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span id="hr11" data-time="11" class="input-group-text">11AM</span>
+        </div>
+        <textarea id="appt11" data-time="11" class="future form-control" aria-label="Time Eleven o clock a m"></textarea>
+        <div class="input-group-append">
+          <button id="btn11" data-time="11" class="saveBtn btn btn-outline-secondary" type="button" id="button-addon2">Pencil<br>It In</button>
+        </div>
+      </div>
+      <!-- 12 PM Timeblocks go here -->
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span id="hr12" data-time="12" class="input-group-text">12PM</span>
+        </div>
+        <textarea id="appt12" data-time="12" class="future form-control" aria-label="Time Twelve o clock p m"></textarea>
+        <div class="input-group-append">
+          <button id="btn12" data-time="12" class="saveBtn btn btn-outline-secondary" type="button" id="button-addon2">Pencil<br>It In</button>
+        </div>
+      </div>
+      <!-- 1 PM = 13 Timeblocks go here -->
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span id="hr13" data-time="13" class="input-group-text">&#20;1PM</span>
+        </div>
+        <textarea id="appt13" data-time="13" class="future form-control" aria-label="Time One o clock p m"></textarea>
+        <div class="input-group-append">
+          <button id="btn13" data-time="13" class="saveBtn btn btn-outline-secondary" type="button" id="button-addon2">Pencil<br>It In</button>
+        </div>
+      </div>
+      <!-- 2 PM = 14 Timeblocks go here -->
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span id="hr14" data-time="14" class="input-group-text">&#20;2PM</span>
+        </div>
+        <textarea id="appt14" data-time="14" class="future form-control" aria-label="Time Two o clock p m"></textarea>
+        <div class="input-group-append">
+          <button id="btn14" data-time="14" class="saveBtn btn btn-outline-secondary" type="button" id="button-addon2">Pencil<br>It In</button>
+        </div>
+      </div>
+      <!-- 3 PM = 15 Timeblocks go here -->
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span id="hr15" data-time="15" class="input-group-text">&#20;3PM</span>
+        </div>
+        <textarea id="appt15" data-time="15" class="future form-control" aria-label="Time Three o clock p m"></textarea>
+        <div class="input-group-append">
+          <button id="btn15" data-time="15" class="saveBtn btn btn-outline-secondary" type="button" id="button-addon2">Pencil<br>It In</button>
+        </div>
+      </div>
+      <!-- 4 PM = 16 Timeblocks go here -->
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span id="hr16" data-time="16" class="input-group-text">&#20;4PM</span>
+        </div>
+        <textarea id="appt16" data-time="16" class="future form-control" aria-label="Time Four o clock p m"></textarea>
+        <div class="input-group-append">
+          <button id="btn16" data-time="16" class="saveBtn btn btn-outline-secondary" type="button" id="button-addon2">Pencil<br>It In</button>
+        </div>
+      </div>
+      <!-- 5 PM = 17 Timeblocks go here -->
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span id="hr17" data-time="17" class="input-group-text">&#20;5PM</span>
+        </div>
+        <textarea id="appt17" data-time="17" class="future form-control" aria-label="Time Five o clock p m"></textarea>
+        <div class="input-group-append">
+          <button id="btn17" data-time="17" class="saveBtn btn btn-outline-secondary" type="button" id="button-addon2">Pencil<br>It In</button>
+        </div>
+      </div>      
+      <!-- 6 PM = 18 Timeblocks go here -->
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span id="hr18" data-time="18" class="input-group-text">&#20;6PM</span>
+        </div>
+        <textarea id="appt18" data-time="18" class="future form-control" aria-label="Time Six o clock p m"></textarea>
+        <div class="input-group-append">
+          <button id="btn18" data-time="18" class="saveBtn btn btn-outline-secondary" type="button" id="button-addon2">Pencil<br>It In</button>
+        </div>
+      </div>
+      <!-- 7 PM = 19 Timeblocks go here -->
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span id="hr19" data-time="19" class="input-group-text">&#20;7PM</span>
+        </div>
+        <textarea id="appt19" data-time="19" class="future form-control" aria-label="Time Seven o clock p m"></textarea>
+        <div class="input-group-append">
+          <button id="btn19" data-time="19" class="saveBtn btn btn-outline-secondary" type="button" id="button-addon2">Pencil<br>It In</button>
+        </div>
+      </div>
+      
+
+
+
+
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- using day.js for date manipulation https://day.js.org/docs/en/installation/browse  -->
+    <!-- <script src="path/to/dayjs/dayjs.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/utc.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> -->
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
