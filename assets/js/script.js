@@ -21,128 +21,106 @@
 //      WHEN I refresh the page
 //      THEN the saved events persist
 
-//   Elements
-// var schedApptEl      = $("textarea");
-
-// Class elements
-// var schedApptEl      = $(".schedAppt");
-
-// ID elements
-// var DateEl      = document.getElementById("currentDay");
-// var hr07El      = $("#hr07");
-// var appt07El    = $("#appt07");
-// var btn07El     = $("#btn07");
-// var timerEl = document.getElementById('countdown');
 var time = dayjs().format("hh:mm:ss")
 var prevHour = "";
 var currHour = "";
 
 var secondsCount = 0 ;
 var stateSwitch = 0;
+var scheduleLS = ["&#20;","&#20;","&#20;","&#20;","&#20;","&#20;","&#20;","&#20;","&#20;","&#20;","&#20;","&#20;","&#20;"]
 
-// Sets past,Present Future on init
-function initTimeState() {
-    console.log("InitTimeColor >>>>>>>>>>>>>>>>>>>>>>");
-    console.log("hr07=>" + hr07El);
+// 
+// var plannerEl = document.querySelector("#planner");
+// plannerEl.addEventListener("click", handleEvent, false);
 
-    
-    for (let i = 7; i < 20; i++) {
-        if (currHour < i) {
-            $("#appt" + currHour).removeClass("future").addClass("past");
-        } else if (currHour == i) {
-            $("\'#appt"+ currHour + "\'").removeClass("future").addClass("present");
-        };
-// // set attr /query/ set style
-// // set innerHTML
-    }
-    prevHour = currHour;
-    
-}
 
-function initTime() {
-    console.log("initTime >>>>>>>>>>>>>>>>>>>>>>");
-    currHour = dayjs().format("HH");
-    console.log("hour =>" + currHour + "<<  typeof=>" + typeof currHour);
-    console.log("textarea collection length==>" + $('textarea').length);
-    for (let i = 7; i < 20; i++) {
-        if (currHour < i) {
-            $("#appt" + currHour).removeClass("future").addClass("past");
-        } else if (currHour == i) {
-            $("\'#appt"+ currHour + "\'").removeClass("future").addClass("present");
-        }
+document.querySelector("#planner").addEventListener("click", handleEvent, false);
+// $("#planner").on("click", handleEvent, false);
+
+function handleEvent(event) {
+    // console.log("handleEvent >>>>>>>>>>>>>>>>>>>>>>");
+    if (event.target !== event.currentTarget) {
+    //   console.log ("type target event=>", event.target.localName)
+    //   console.log ("event=>", event)
+      if (event.target.localName === 'button') {
+        // console.log("save textarea=>", event.target.dataset.time);
+        // var btnTime = event.target.dataset.time;
+        $('textarea').each(function(idx) {
+            scheduleLS[idx] =  $(this).val();
+        })
+        localStorage.setItem("schedule", JSON.stringify(scheduleLS));
     };
-        // if (currHour !== prevHour){
-            //     console.log("change attribute of prevHour");
-            //     var genApptEl = $('"#hr"' + prevHour + '"' );
-            //     console.log("genApptEl==>" + genApptEl)
-            // }    
-    prevHour = currHour;
-    console.log("hour =>" + currHour + "<<  typeof=>" + typeof currHour);
+};
+// stop bubbling
+event.stopPropagation();
+};
+
+function retrieveLocalStorage () {
+    // console.log("retrieveLocalStoragel >>>>>>>>>>>>>>>>>>>>>>");
+    scheduleLS = JSON.parse(localStorage.getItem("schedule"));
+    // populate the testareas
+    $('textarea').each(function(idx) {
+        $(this).val(scheduleLS[idx]);
+    });
 }
 
 // Check to see for an hour change
 function checkTimeState() {
-    console.log("CheckTimeColor >>>>>>>>>>>>>>>>>>>>>>");
+    // console.log("CheckTimeState >>>>>>>>>>>>>>>>>>>>>>");
     currHour = dayjs().format("HH");
-    console.log("hour =>" + currHour + "<<  typeof=>" + typeof currHour);
-    if (stateSwitch === 0) {
-        initTimeState();
-
-    }
-    // if (currHour !== prevHour){
-        //     console.log("change attribute of prevHour");
-        //     var genApptEl = $('"#hr"' + prevHour + '"' );
-        //     console.log("genApptEl==>" + genApptEl)
-        // }    
+    if (currHour != prevHour) {
+        $('textarea').removeClass("past present future");
+        $('textarea').each(function(idx) {
+            var apptHour = idx + 7;
+            if (apptHour < currHour) {
+                $(this).addClass("past");
+            } else {
+                if (apptHour == currHour) {
+                    $(this).addClass("present");
+                } else {
+                    $(this).addClass("future");
+                };
+            };
+        });
+        prevHour = currHour;
+    };
 }
     
     // this set the time interval for 60 seconds
-function checkTime() {
-console.log("CheckTime >>>>>>>>>>>>>>>>>>>>>>");
-    // Sets interval in variable
+function checkTimeInterval() {
+    // console.log("checkTimeInterval >>>>>>>>>>>>>>>>>>>>>>");
     var timerInterval = setInterval(function() {
         secondsCount++;
         if(secondsCount === 60) {
-            console.log("60 seconds " + dayjs().format("hh:mm:ss"));
             secondsCount = 0;
             checkTimeState();        
         };  
-        // Stops execution of action at set interval
-        //   clearInterval(timerInterval);
-        // Calls function to create and append image
     }, 1000);
-} 
-// checkTime();
-// console.log("schedAppt=>" + schedApptEl.data);
-// console.log("hr07=>" + hr07El);
+}; 
 
-
-// initTime();
-// checkState();
+// this is setup when document is finished loading
 $(document).ready(function() {
+    // console.log("document ready  >>>>>>>>>>>>>>>>>>>>>>");
     $("#currentDay").html("Today is " + dayjs().format("dddd, MM/DD/YYYY"));
-    console.log("textarea collection length==>" + $('textarea').length); 
     $('textarea').removeClass("past present future");
     currHour = dayjs().format("HH");
-    // currHour = "12";
-        $('textarea').each(function(idx) {
-        console.log(idx + ": " + $(this).text());
+    $('textarea').each(function(idx) {
         var apptHour = idx + 7;
         if (apptHour < currHour) {
             $(this).addClass("past");
-            console.log(apptHour + " < " + currHour + "  past");
         } else {
             if (apptHour == currHour) {
                 $(this).addClass("present");
-                console.log(apptHour + " = " + currHour + "  present");
             } else {
                 $(this).addClass("future");
-                console.log(apptHour + " > " + currHour + "  future");
             };
         };
     });
-    prevHour = currHour; 
+    prevHour = currHour;
+    checkTimeInterval();
+    retrieveLocalStorage();
 });
+
 // DateEl.innerHTML = "Today is " + dayjs().format("dddd, MM/DD/YYYY");
-console.log("display current date " + dayjs().format("dddd, MM/DD/YYYY"))
-console.log(time)
+// console.log("display current date " + dayjs().format("dddd, MM/DD/YYYY"))
+// console.log(time)
