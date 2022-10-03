@@ -102,11 +102,11 @@ $(document).ready(function() {
     // $("#planner").click(function (event) {
     $("#planner").on("click", function (event) {
     // function handleEvent(event) {
-        console.log("handleEvent >>>>>>>>>>>>>>>>>>>>>>");
+        // console.log("handleEvent >>>>>>>>>>>>>>>>>>>>>>");
         if (event.target !== event.currentTarget) {
         //   console.log ("event target localName=>", event.target.localName);
         //   console.log ("event target id=>", event.target.id);
-          console.log ("event=>", event);
+        //   console.log ("event=>", event);
         //   if (event.target.localName !== "button") {
             // console.log(event.target.localName, " not = button");
         //   };
@@ -157,16 +157,18 @@ $(document).ready(function() {
                 break;
           };
           };
-          
+        //    text='"#appt"' + event.target.id + '\"'
+        //    $(text)
+
+
         //   if (event.target.localName === 'button') {
-        //     console.log("save textarea=>", event.target.dataset.time);
         //     var btnTime = event.target.dataset.time;
         //     $('textarea').each(function(idx) {
         //         scheduleLS[idx] =  $(this).val();
         //     })
 
             localStorage.setItem("schedule", JSON.stringify(scheduleLS));
-            console.log("save to localStorage=>", scheduleLS)
+            // console.log("save to localStorage=>", scheduleLS)
         };
     // stop bubbling
     // event.stopPropagation();
