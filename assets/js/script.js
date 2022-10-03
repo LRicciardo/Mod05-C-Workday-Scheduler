@@ -32,8 +32,12 @@ var scheduleLS = ["&#20;","&#20;","&#20;","&#20;","&#20;","&#20;","&#20;","&#20;
 function retrieveLocalStorage () {
     // console.log("retrieveLocalStoragel >>>>>>>>>>>>>>>>>>>>>>");
     scheduleLS = JSON.parse(localStorage.getItem("schedule")) || [];
+
     // populate the testareas
     $('textarea').each(function(idx) {
+        if (scheduleLS[idx] === null){
+            scheduleLS[idx] = "&#20;"
+        }
         $(this).val(scheduleLS[idx]);
     });
 }
@@ -102,7 +106,7 @@ $(document).ready(function() {
         if (event.target !== event.currentTarget) {
         //   console.log ("event target localName=>", event.target.localName);
         //   console.log ("event target id=>", event.target.id);
-        //   console.log ("event=>", event);
+          console.log ("event=>", event);
         //   if (event.target.localName !== "button") {
             // console.log(event.target.localName, " not = button");
         //   };
@@ -160,6 +164,7 @@ $(document).ready(function() {
         //     $('textarea').each(function(idx) {
         //         scheduleLS[idx] =  $(this).val();
         //     })
+
             localStorage.setItem("schedule", JSON.stringify(scheduleLS));
             console.log("save to localStorage=>", scheduleLS)
         };
