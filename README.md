@@ -9,7 +9,8 @@ Create a planner to plan your daily schedule. Type in your activity then click o
 
 ## Installation
 
-No installation needed. Just run the webpage.
+No installation needed. Just run the webpage: 
+[Module 5 Challange Webpage](https://lricciardo.github.io/Mod05-C-Workday-Scheduler/) 
 
 
 ## Usage
@@ -17,16 +18,18 @@ No installation needed. Just run the webpage.
 Type your your appointment or todo on the hour it is to be done. click the mouse on the "Pencil It In" buttons to save it.
 
 
-![Screenshot of WorkDay Schedule](./READMEimages/Screenshot%202022-10-02%20212317.png)
+![Screenshot of WorkDay Schedule](./READMEimages/Mod05-C-Screenshot.png)
+[click Here for Big Screenshot of WorkDay Schedule](./READMEimages/Mod05-C-Screenshot.png)
+
 
 
 ## Credits
 
-List your collaborators, if any, with links to their GitHub profiles.
+Used starter code for project, Bootstrap, day.js, jquery, and fontAwesome.
 
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
+I used the pencil image from (www.vecteezy.com) and made the background transparent.
+I used a clockface image from the internet but forgot where (sorry but it was free).
 
-If you followed tutorials, include links to those here as well.
 
 ## License
 

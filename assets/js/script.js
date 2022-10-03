@@ -95,22 +95,74 @@ $(document).ready(function() {
     retrieveLocalStorage();
 
     // handleEvent
-    $("#planner").click(function (event) {
+    // $("#planner").click(function (event) {
+    $("#planner").on("click", function (event) {
     // function handleEvent(event) {
-        // console.log("handleEvent >>>>>>>>>>>>>>>>>>>>>>");
+        console.log("handleEvent >>>>>>>>>>>>>>>>>>>>>>");
         if (event.target !== event.currentTarget) {
-        //   console.log ("type target event=>", event.target.localName)
-        //   console.log ("event=>", event)
-          if (event.target.localName === 'button') {
-            // console.log("save textarea=>", event.target.dataset.time);
-            // var btnTime = event.target.dataset.time;
-            $('textarea').each(function(idx) {
-                scheduleLS[idx] =  $(this).val();
-            })
+        //   console.log ("event target localName=>", event.target.localName);
+        //   console.log ("event target id=>", event.target.id);
+        //   console.log ("event=>", event);
+        //   if (event.target.localName !== "button") {
+            // console.log(event.target.localName, " not = button");
+        //   };
+          if (event.target.localName == "button") {
+            switch (event.target.id) {
+            case "btn07":
+                scheduleLS[0] = $("#appt07").val();
+                break;
+            case "btn08":
+                scheduleLS[1] = $("#appt08").val();
+                break;
+            case "btn09":
+                scheduleLS[2] = $("#appt09").val();
+                break;
+            case "btn10":
+                scheduleLS[3] = $("#appt10").val();
+                break;
+            case "btn11":
+                scheduleLS[4] = $("#appt11").val();
+                break;
+            case "btn12":
+                scheduleLS[5] = $("#appt12").val();
+                break;
+            case "btn13":
+                scheduleLS[6] = $("#appt13").val();
+                break;
+            case "btn14":
+                scheduleLS[7] = $("#appt14").val();
+                break;
+            case "btn15":
+                scheduleLS[8] = $("#appt15").val();
+                break;
+            case "btn16":
+                scheduleLS[9] = $("#appt16").val();
+                break;
+            case "btn17":
+                scheduleLS[10] = $("#appt17").val();
+                break;
+            case "btn18":
+                scheduleLS[11] = $("#appt18").val();
+                break;
+            case "btn19":
+                scheduleLS[12] = $("#appt19").val();
+                break;
+            default:
+                console.log("no button should get here");
+                console.log(event);
+                break;
+          };
+          };
+          
+        //   if (event.target.localName === 'button') {
+        //     console.log("save textarea=>", event.target.dataset.time);
+        //     var btnTime = event.target.dataset.time;
+        //     $('textarea').each(function(idx) {
+        //         scheduleLS[idx] =  $(this).val();
+        //     })
             localStorage.setItem("schedule", JSON.stringify(scheduleLS));
         };
-    };
     // stop bubbling
-    event.stopPropagation();
+    // event.stopPropagation();
     });
 });
