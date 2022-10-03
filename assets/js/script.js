@@ -10,50 +10,24 @@
 //  X   WHEN I scroll down
 //  X    THEN I am presented with time blocks for standard business hours
 //      WHEN I view the time blocks for that day
-//      THEN each time block is color-coded to indicate whether it is in the past, present, or future
-//             past -- light gray
-//             present -- yellow
-//             future -- blue
-//      WHEN I click into a time block
-//      THEN I can enter an event
-//      WHEN I click the save button for that time block
-//      THEN the text for that event is saved in local storage
-//      WHEN I refresh the page
-//      THEN the saved events persist
+//  X    THEN each time block is color-coded to indicate whether it is in the past, present, or future
+//   X          past -- light gray
+//   X          present -- yellow
+//   X          future -- blue
+//   X   WHEN I click into a time block
+//   X   THEN I can enter an event
+//   X   WHEN I click the save button for that time block
+//   X   THEN the text for that event is saved in local storage
+//   X   WHEN I refresh the page
+//   X   THEN the saved events persist
 
 var time = dayjs().format("hh:mm:ss")
 var prevHour = "";
 var currHour = "";
 
 var secondsCount = 0 ;
-var stateSwitch = 0;
 var scheduleLS = ["&#20;","&#20;","&#20;","&#20;","&#20;","&#20;","&#20;","&#20;","&#20;","&#20;","&#20;","&#20;","&#20;"]
 
-// 
-// var plannerEl = document.querySelector("#planner");
-// plannerEl.addEventListener("click", handleEvent, false);
-
-
-document.querySelector("#planner").addEventListener("click", handleEvent, false);
-// $("#planner").on("click", handleEvent, false);
-
-function handleEvent(event) {
-    // console.log("handleEvent >>>>>>>>>>>>>>>>>>>>>>");
-    if (event.target !== event.currentTarget) {
-    //   console.log ("type target event=>", event.target.localName)
-    //   console.log ("event=>", event)
-      if (event.target.localName === 'button') {
-        // console.log("save textarea=>", event.target.dataset.time);
-        // var btnTime = event.target.dataset.time;
-        $('textarea').each(function(idx) {
-            scheduleLS[idx] =  $(this).val();
-        })
-        localStorage.setItem("schedule", JSON.stringify(scheduleLS));
-    };
-};
-// stop bubbling
-event.stopPropagation();
-};
 
 function retrieveLocalStorage () {
     // console.log("retrieveLocalStoragel >>>>>>>>>>>>>>>>>>>>>>");
@@ -119,8 +93,24 @@ $(document).ready(function() {
     prevHour = currHour;
     checkTimeInterval();
     retrieveLocalStorage();
-});
 
-// DateEl.innerHTML = "Today is " + dayjs().format("dddd, MM/DD/YYYY");
-// console.log("display current date " + dayjs().format("dddd, MM/DD/YYYY"))
-// console.log(time)
+    // handleEvent
+    $("#planner").click(function (event) {
+    // function handleEvent(event) {
+        // console.log("handleEvent >>>>>>>>>>>>>>>>>>>>>>");
+        if (event.target !== event.currentTarget) {
+        //   console.log ("type target event=>", event.target.localName)
+        //   console.log ("event=>", event)
+          if (event.target.localName === 'button') {
+            // console.log("save textarea=>", event.target.dataset.time);
+            // var btnTime = event.target.dataset.time;
+            $('textarea').each(function(idx) {
+                scheduleLS[idx] =  $(this).val();
+            })
+            localStorage.setItem("schedule", JSON.stringify(scheduleLS));
+        };
+    };
+    // stop bubbling
+    event.stopPropagation();
+    });
+});
