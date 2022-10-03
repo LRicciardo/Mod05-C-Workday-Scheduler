@@ -31,7 +31,7 @@ var scheduleLS = ["&#20;","&#20;","&#20;","&#20;","&#20;","&#20;","&#20;","&#20;
 
 function retrieveLocalStorage () {
     // console.log("retrieveLocalStoragel >>>>>>>>>>>>>>>>>>>>>>");
-    scheduleLS = JSON.parse(localStorage.getItem("schedule"));
+    scheduleLS = JSON.parse(localStorage.getItem("schedule")) || [];
     // populate the testareas
     $('textarea').each(function(idx) {
         $(this).val(scheduleLS[idx]);
@@ -161,6 +161,7 @@ $(document).ready(function() {
         //         scheduleLS[idx] =  $(this).val();
         //     })
             localStorage.setItem("schedule", JSON.stringify(scheduleLS));
+            console.log("save to localStorage=>", scheduleLS)
         };
     // stop bubbling
     // event.stopPropagation();
